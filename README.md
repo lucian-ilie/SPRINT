@@ -1,6 +1,9 @@
 ## SPRINT (Scoring PRotein INTeractions)
 
-Author: 
+### Citation 
+Y. Li, L. Ilie, SPRINT: Ultrafast protein-protein interaction prediction of the entire human interactome, BMC Bioinformatics 18 (2017) 485.
+
+### Author: 
 
 Yiwei Li, Lucian Ilie
 
@@ -128,6 +131,5 @@ The commands for running SPRINT on the toy dataset in SPRINT/toy_example are giv
 ```
 bin/predict_interactions -p toy_example/protein_sequences.seq -h HSP/hsps_toy_example -tr toy_example/train_positive.txt -e -o toy_example/result_interactome.txt
 ```
-### Citation 
-Y. Li, L. Ilie, SPRINT: Ultrafast protein-protein interaction prediction of the entire human interactome, BMC Bioinformatics 18 (2017) 485.
+
 
