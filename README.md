@@ -1,4 +1,4 @@
-##The Source code of SPRINT (Scoring PRotein INTeractions)
+## SPRINT (Scoring PRotein INTeractions)
 
 Author: 
 
@@ -12,13 +12,13 @@ Department of Computer Science
 
 The University of Western Ontario, London, Ontario, Canada
 
-###Description
+### Description
 
 SPRINT consists of two components: compute_HSPs and predict_interactions. 
 
 Since pre-computing human HSPs takes about two days on 12 cores, we provide the computed HSPs of the entire human proteome. The human protein sequences are from uniprot (http://www.uniprot.org/). The number of human proteins that we used to compute theses HSPs is 20160.
 
-###Installation
+### Installation
 
 You need g++ compiler, OpenMP(http://openmp.org/wp/) library(if you want to run the program in parallel), and boost(http://www.boost.org/) library(only for compute_HSPs) 
 
@@ -30,11 +30,11 @@ You need g++ compiler, OpenMP(http://openmp.org/wp/) library(if you want to run 
  * to compile the serial version of predict_interactions type "make predict_interactions_serial" (only require g++ under any Unix-like environment)
  * to compile the parallel version of predict_interactions type "make predict_interactions_parallel" (require g++ and OpenMP)
 
-###Toy Examples
+### Toy Examples
 
 Please go the the directory SPRINT/toy_example to see the inputs format of SPRINT. 
 
-###Input files
+### Input files
 
 The directory SPRINT/toy_example contains input files as a toy dataset for SPRINT.
 
@@ -45,7 +45,7 @@ They are:
 - Two testing files: test_positive.txt and test_negative.txt
 
 
-###Input files format
+### Input files format
 
 1. protein sequence file: the file that contains the entire proteome sequences for an organism
  For each protein, there are two lines.
@@ -66,7 +66,7 @@ They are:
 
  The format is: < Protein1_name > < Protein2_name >
 
-###How to run SPRINT
+### How to run SPRINT
 
 SPRINT consists of two parts: compute_HSPs and predict_interactions.
 
@@ -107,7 +107,7 @@ SPRINT consists of two parts: compute_HSPs and predict_interactions.
 
  -e (if you need to perform the entire proteome prediction) (optional)
 
-###Example
+### Example
 
 The commands for running SPRINT on the toy dataset in SPRINT/toy_example are given below.
 
@@ -128,9 +128,6 @@ The commands for running SPRINT on the toy dataset in SPRINT/toy_example are giv
 ```
 bin/predict_interactions -p toy_example/protein_sequences.seq -h HSP/hsps_toy_example -tr toy_example/train_positive.txt -e -o toy_example/result_interactome.txt
 ```
-###Author 
-Yiwei Li, Lucian Ilie
+### Citation 
+Y. Li, L. Ilie, SPRINT: Ultrafast protein-protein interaction prediction of the entire human interactome, BMC Bioinformatics 18 (2017) 485.
 
-Department of Computer Science
-
-The University of Western Ontario
