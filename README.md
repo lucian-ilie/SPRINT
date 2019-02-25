@@ -19,6 +19,10 @@ The University of Western Ontario, London, Ontario, Canada
 
 SPRINT consists of two components: compute_HSPs and predict_interactions. 
 
+`Compute_HSPs` computes the similar sub-sequences among all input proteins. 
+
+`Predict_interactions` predicts interactions based on the computed similarities and input training data.
+
 Since pre-computing human HSPs takes about two days on 12 cores, we provide the computed HSPs of the entire human proteome. The human protein sequences are from uniprot (http://www.uniprot.org/). The number of human proteins that we used to compute theses HSPs is 20160.
 
 ### Installation
