@@ -3,6 +3,7 @@
 ### Citation 
 Y. Li, L. Ilie, SPRINT: Ultrafast protein-protein interaction prediction of the entire human interactome, BMC Bioinformatics 18 (2017) 485.
 
+Y. Li, L. Ilie, Predicting Protein–Protein Interactions Using SPRINT, In Protein-Protein Interaction Networks (pp. 1-11). Humana, New York, NY.
 ### Author: 
 
 Yiwei Li, Lucian Ilie
