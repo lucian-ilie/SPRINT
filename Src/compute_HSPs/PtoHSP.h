@@ -40,21 +40,22 @@ public:
 };
 
 void PtoHSP :: print_HSP(){
-	if(ONLY_COMPUTE_NEW_PROTEIN){	//for each protein, add a hsp(0,lenth_of_pro), but only for newly added proteins, that is, starting from id num_old_protein
-		for(int a = num_old_protein; a < num_protein; a ++){
-			HSP_pair p(0, 0, p_id_seq.at(a).length());
-			// HSP_PAIRS.insert(make_pair(make_pair(a, a), p));
-			HSP_PAIRS[make_pair(a, a)].insert(p);
-		}	
-	}
-	else{
-		//for each protein, add a hsp(0,lenth_of_pro) 
-		for(int a = 0; a < num_protein; a ++){
-			HSP_pair p(0, 0, p_id_seq.at(a).length());
-			// HSP_PAIRS.insert(make_pair(make_pair(a, a), p));
-			HSP_PAIRS[make_pair(a, a)].insert(p);
-		}		
-	}
+	// comment out because we don't need self-HSP
+	// if(ONLY_COMPUTE_NEW_PROTEIN){	//for each protein, add a hsp(0,lenth_of_pro), but only for newly added proteins, that is, starting from id num_old_protein
+	// 	for(int a = num_old_protein; a < num_protein; a ++){
+	// 		HSP_pair p(0, 0, p_id_seq.at(a).length());
+	// 		// HSP_PAIRS.insert(make_pair(make_pair(a, a), p));
+	// 		HSP_PAIRS[make_pair(a, a)].insert(p);
+	// 	}	
+	// }
+	// else{
+	// 	//for each protein, add a hsp(0,lenth_of_pro) 
+	// 	for(int a = 0; a < num_protein; a ++){
+	// 		HSP_pair p(0, 0, p_id_seq.at(a).length());
+	// 		// HSP_PAIRS.insert(make_pair(make_pair(a, a), p));
+	// 		HSP_PAIRS[make_pair(a, a)].insert(p);
+	// 	}		
+	// }
 
 	//output HSP_PAIRS
 	cout<<"----------output the HSP_PAIRS-------"<<endl;
@@ -179,9 +180,12 @@ void PtoHSP :: investigate_hits(uint64_t smer1_index, uint64_t smer2_index, HASH
 				NEED_CHECK = 1;
 				p1_id = ht.hash_table[smer1_index].smer_occs[a].pro_id;
 				p2_id = ht.hash_table[smer2_index].smer_occs[b].pro_id;
-
-				if(ONLY_COMPUTE_NEW_PROTEIN){//check if the proteins are new proteins: if old, skip
-					if((new_proteins.find(p1_id) != new_proteins.end()) ||  (new_proteins.find(p2_id) != new_proteins.end()) ){//at least one of them needs to be new
+				// only compute HSP between different proteins. For interface prediction
+        		if (p1_id == p2_id) {
+          			return;
+        		}
+				if(ONLY_COMPUTE_NEW_PROTEIN){
+					if( ((new_proteins.find(p1_id) != new_proteins.end()) && (new_proteins.find(p2_id) == new_proteins.end())) || ((new_proteins.find(p1_id) == new_proteins.end()) && (new_proteins.find(p2_id) != new_proteins.end()))){//condition to check: one old protein, one new protein
 						NEED_CHECK = 1;
 					}
 					else{
@@ -225,8 +229,11 @@ void PtoHSP :: investigate_hits(uint64_t smer1_index, uint64_t smer2_index, HASH
 				NEED_CHECK = 1;
 				p1_id = ht.hash_table[smer1_index].smer_occs[a].pro_id;
 				p2_id = ht.hash_table[smer2_index].smer_occs[b].pro_id;
-				if(ONLY_COMPUTE_NEW_PROTEIN){//check if the proteins are new proteins: if old, skip
-					if((new_proteins.find(p1_id) != new_proteins.end()) ||  (new_proteins.find(p2_id) != new_proteins.end()) ){//at least one of them needs to be new
+		        // only compute HSP between different proteins. For interface prediction
+       			if (p1_id == p2_id) {
+       			   return;
+        		}
+				if( ((new_proteins.find(p1_id) != new_proteins.end()) && (new_proteins.find(p2_id) == new_proteins.end())) || ((new_proteins.find(p1_id) == new_proteins.end()) && (new_proteins.find(p2_id) != new_proteins.end()))){//condition to check: one old protein, one new protein
 						NEED_CHECK = 1;
 					}
 					else{
