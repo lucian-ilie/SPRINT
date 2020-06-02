@@ -239,7 +239,7 @@ void PtoHSP :: investigate_hits(uint64_t smer1_index, uint64_t smer2_index, HASH
 					else{
 						NEED_CHECK = 0;
 					}
-				}	
+					
 				if(NEED_CHECK){			
 					sta1 = ht.hash_table[smer1_index].smer_occs[a].sta_pos;
 					sta2 = ht.hash_table[smer2_index].smer_occs[b].sta_pos;		
