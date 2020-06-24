@@ -16,7 +16,7 @@
 using namespace std;
 
 const int DEBUG = 0;	//1: print debug info
-const int STAS = 1;		//1: print statistics info
+const int STAS = 0;		//1: print statistics info
 //section: add. only when new protein sequences are added
 int ONLY_COMPUTE_NEW_PROTEIN = 0; // 1: only compute the HSPs of new proteins and append the new HSPs into the original HSP file.
 string NEW_PROTEIN_FN;
